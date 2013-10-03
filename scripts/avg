@@ -1,0 +1,3 @@
+#!/bin/sh
+
+$@ | grep "ticks/msg" | awk 'sum+=$1; END {print sum/NR, " ticks/msg avg"}'

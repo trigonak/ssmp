@@ -1,0 +1,42 @@
+Steps to compile ssmp:
+----------------------
+
+1. Fix the Makefile (not always necessary)
+   
+   The Makefile sets some parameters based on which is the host you are running on.
+   The parameters are:
+       * MEASUREMENTS : set to 1 in order to compile libssmp with a simple profiler
+       * TARGET_ARCH : set the target architecture. Currently supported: i386, x86_64, sparc, tile
+       * TARGET_PLAT : set generic for the default message passing implementation. You can set to e.g. opteron for optimized implementations. Supported target platforms: generic, opteron, xeon, tilera, niagara. In details:
+       	 	     * opteron: optimized for an 8-socket AMD Opteron Magny Cours
+		     * xeon: optimized for an 8-socket Intel Xeon Westemere-EX
+		     * tilera: interface for Tilera's hardware message passing
+		     * niagara: optimized for an UltraSPARC-T2
+       * CC : the compiler to be used
+       * CFLAGS : the compilation flags
+       * LDFLAGS : the libraries to link with
+       * VER_FLAGS : version flags, such as the platform name
+
+   If a configuration is not specified, the DEFAULT configuration is used (it should work for most x86 platforms).
+
+3. Set the cpu speed in measurements.h (REF_SPEED_GHZ)
+   
+3. Compile for the target platform
+
+   In the base folder of the project execute:
+      make all
+
+   This will compile both libssmp.a and the benchmarks
+
+4. ./application_name -h 
+
+   You will get all the details you need in order to use the applications. 
+
+
+Tested platforms:
+-----------------
+
+ccbench has been tested on the following platforms:
+	* UMA and NUMA x86_64
+	* SPARC (UltraSPARC T2, UltraSPARC T4-4)
+	* Tilera (Tile-GX36)
