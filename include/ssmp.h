@@ -44,6 +44,8 @@
 #include <inttypes.h>
 #include <malloc.h>
 
+#define SSMP 1
+
 #ifdef PLATFORM_NUMA
 #  include <numa.h>
 #endif /* PLATFORM_NUMA */
