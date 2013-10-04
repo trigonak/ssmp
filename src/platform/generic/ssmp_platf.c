@@ -237,6 +237,13 @@ ssmp_send_platf(uint32_t to, volatile ssmp_msg_t* msg)
   memcpy((void*) tmpm, (const void*) msg, SSMP_CACHE_LINE_SIZE);
 }
 
+inline int
+ssmp_send_is_free_platf(uint32_t to)
+{
+  volatile ssmp_msg_t* tmpm = ssmp_send_buf[to];
+  return (tmpm->state == SSMP_BUF_EMPTY);
+}
+
 inline void
 ssmp_send_no_sync_platf(uint32_t to, volatile ssmp_msg_t* msg) 
 {

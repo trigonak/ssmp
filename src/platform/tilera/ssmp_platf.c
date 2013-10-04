@@ -85,6 +85,13 @@ ssmp_send_platf(uint32_t to, volatile ssmp_msg_t* msg)
   tmc_udn_send_buffer(udn_header[to], UDN0_DEMUX_TAG, (void*) msg, SSMP_CACHE_LINE_W);
 }
 
+inline int
+ssmp_send_is_free_platf(uint32_t to) 
+{
+  return 1;			/* cannot really implement this on the Tilera */
+}
+
+
 inline void
 ssmp_send_no_sync_platf(uint32_t to, volatile ssmp_msg_t* msg) 
 {

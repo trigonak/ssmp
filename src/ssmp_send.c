@@ -41,6 +41,12 @@ ssmp_send(uint32_t to, volatile ssmp_msg_t* msg)
   ssmp_send_platf(to, msg);
 }
 
+inline int
+ssmp_send_is_free(uint32_t to)
+{
+  return ssmp_send_is_free_platf(to);
+}
+
 inline void
 ssmp_send_no_sync(uint32_t to, volatile ssmp_msg_t* msg) 
 {

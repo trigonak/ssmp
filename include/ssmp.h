@@ -148,6 +148,8 @@ extern void ssmp_term(void);
 
 /* send the contents of msg to core to */
 extern inline void ssmp_send(uint32_t to, volatile ssmp_msg_t* msg);
+/* check whether the queue of core to is free */
+extern inline int ssmp_send_is_free(uint32_t to);
 /* send the contents of msg to core to without checking whether the buffer
    for receiving messages of to if free */
 extern inline void ssmp_send_no_sync(uint32_t to, volatile ssmp_msg_t* msg);
@@ -268,6 +270,7 @@ extern void ssmp_init_platf(int num_procs);
 extern void ssmp_mem_init_platf(int id, int num_ues);
 extern void ssmp_term_platf(void);
 extern inline void ssmp_send_platf(uint32_t to, volatile ssmp_msg_t* msg);
+extern inline int ssmp_send_is_free_platf(uint32_t to);
 extern inline void ssmp_send_no_sync_platf(uint32_t to, volatile ssmp_msg_t* msg);
 extern inline void ssmp_send_big_platf(int to, void* data, size_t length);
 extern inline void ssmp_recv_from_platf(uint32_t from, volatile ssmp_msg_t* msg);
