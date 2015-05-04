@@ -21,7 +21,7 @@
 #include "ssmp.h"
 #include "measurements.h"
 
-#define ROUNDTRIP_
+#define ROUNDTRIP
 #define DEBUG_
 #define NO_SYNC_SRV_
 
@@ -239,10 +239,14 @@ main(int argc, char **argv)
     {
       ssmp_barrier_wait(0);
 
+      size_t recved_num = 0;
+
       PF_START(2);
       while(1) 
 	{
 	  ssmp_recv_color_start(cbuf, msg);
+
+	  recved_num++;
 
 	  if (delay_cs)
 	    {
@@ -266,7 +270,7 @@ main(int argc, char **argv)
 	    }
 	}
       PF_STOP(2);
-      total_samples[2] = num_msgs / num_dsl;
+      total_samples[2] = recved_num;
     }
   else 				/* client */
     {
