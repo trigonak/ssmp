@@ -21,7 +21,7 @@
 #include "ssmp.h"
 #include "measurements.h"
 
-#define ROUNDTRIP
+/* #define ROUNDTRIP */
 #define DEBUG_
 #define NO_SYNC_SRV_
 
